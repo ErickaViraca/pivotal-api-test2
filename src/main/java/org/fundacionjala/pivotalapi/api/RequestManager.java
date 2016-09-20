@@ -3,6 +3,7 @@ package org.fundacionjala.pivotalapi.api;
 import java.util.Map;
 
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
@@ -31,7 +32,7 @@ public final class RequestManager {
     public static Response post(final String endPoint, final String body) {
         LOGGER.info("POST endpoint is: " + endPoint);
         return given().spec(REQUEST_SPECIFICATION)
-                .header("Content-Type", "application/json")
+                .contentType(ContentType.JSON)
                 .body(body)
                 .when()
                 .post(endPoint);
